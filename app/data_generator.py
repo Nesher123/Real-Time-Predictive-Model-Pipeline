@@ -1,9 +1,19 @@
+import os
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
+from app.utils import get_project_root
 
 
 def generate_synthetic_data(num_samples: int = 1000, last_purchases_size: int = 3) -> pd.DataFrame:
+    """
+    Generate synthetic data for the purchase prediction model
+
+    :param num_samples: the number of samples to generate
+    :param last_purchases_size: the number of past purchases to generate
+    :return: a DataFrame containing the synthetic data
+    """
+
     np.random.seed(42)
 
     # Generate random user_ids
@@ -43,5 +53,8 @@ def generate_synthetic_data(num_samples: int = 1000, last_purchases_size: int = 
 if __name__ == '__main__':
     synthetic_data = generate_synthetic_data()
     print(synthetic_data.head())
-    # save csv
-    synthetic_data.to_csv('synthetic_data.csv', index=False)
+
+    # save csv to src folder outside the package
+    path_to_save = get_project_root()
+    file_dir = os.path.join(path_to_save, 'src', 'synthetic_data.csv')
+    synthetic_data.to_csv(file_dir, index=False)

@@ -1,10 +1,9 @@
 import pandas as pd
-import pickle
-import os
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from src.data_generator import generate_synthetic_data
-from src.data_processor import preprocess_data
+from data_generator import generate_synthetic_data
+from data_processor import preprocess_data
+from utils import save_model
 
 
 def train_and_save_model(df: pd.DataFrame) -> None:
@@ -28,20 +27,14 @@ def train_and_save_model(df: pd.DataFrame) -> None:
     clf = RandomForestClassifier(random_state=42)
     clf.fit(X_train, y_train)
 
-    # create the 'model' folder if it doesn't exist
-    if not os.path.exists('model'):
-        os.makedirs('model')
-
-    # save the model to disk
-    with open('model/model.pkl', 'wb') as f:
-        pickle.dump(clf, f)
+    save_model(clf, 'model.pkl')
 
     # Evaluate model accuracy on the test set
     accuracy = clf.score(X_test, y_test)
     print(f'Model accuracy: {accuracy:.2f}')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     synthetic_data = generate_synthetic_data()
     preprocessed_data = preprocess_data(synthetic_data)
     train_and_save_model(preprocessed_data)

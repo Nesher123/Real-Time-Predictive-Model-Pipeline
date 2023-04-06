@@ -17,7 +17,7 @@ def _map_pages(data: pd.DataFrame) -> pd.DataFrame:
     :param data: dataframe with the pages
     :return: dataframe with mapped values
     """
-    # one-liner
+
     return data.applymap(lambda col: PAGES[col])
 
 
@@ -27,6 +27,7 @@ def preprocess_data(data: pd.DataFrame) -> pd.DataFrame:
     :param data: dataframe with the data
     :return: dataframe with the preprocessed data
     """
+
     # split the last_three_pages_visited into separate columns
     last_three_pages_visited_split = data['last_three_pages_visited'].str.split('/', expand=True)
     last_three_pages_visited_split.columns = ['page_1', 'page_2', 'page_3']
@@ -40,7 +41,7 @@ def preprocess_data(data: pd.DataFrame) -> pd.DataFrame:
     return data[[c for c in FEATURES_FOR_MODEL if c in data.columns]]
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     # test the function
     test_data = pd.DataFrame([['home/cart/checkout', 1, 0], ['home/cart/products', 1, 0]],
                              columns=['last_three_pages_visited', 'mean_purchase', 'purchase'])

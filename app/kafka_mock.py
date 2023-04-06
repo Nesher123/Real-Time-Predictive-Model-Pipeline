@@ -51,8 +51,8 @@ def produce_synthetic_data(producer: MockKafkaProducer, data: pd.DataFrame) -> N
     """
     for _, row in data.iterrows():
         message = {
-            "user_id": row["user_id"],
-            "timestamp": str(row["timestamp"]),
-            "last_three_pages_visited": row["last_three_pages_visited"]
+            'user_id': row['user_id'],
+            'timestamp': str(row['timestamp']),
+            'last_three_pages_visited': row['last_three_pages_visited']
         }
         producer.send("user_browsing_data", json.dumps(message))
