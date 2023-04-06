@@ -5,7 +5,7 @@ import pickle
 import pandas as pd
 import asyncio
 from fastapi.responses import JSONResponse, HTMLResponse
-from app.utils import get_project_root
+from .utils import get_project_root
 from .kafka_mock import MockKafkaProducer, MockKafkaConsumer, produce_synthetic_data
 from .mysql_mock import MockMySQLConnection
 from .data_processor import preprocess_data
