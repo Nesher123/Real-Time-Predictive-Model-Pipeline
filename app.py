@@ -15,11 +15,11 @@ synthetic_data = generate_synthetic_data()  # pd.read_csv("src/synthetic_data.cs
 with open("src/model/model.pkl", "rb") as f:
     model = pickle.load(f)
 
-# Set up mock Kafka consumer
+# Set up (mock) Kafka consumer
 kafka_producer = MockKafkaProducer()
 kafka_consumer = MockKafkaConsumer(kafka_producer)
 
-# Set up mock MySQL connection - insert the offline features into the MySQL database
+# Set up (mock) MySQL connection - insert the offline features into the MySQL database
 mysql_conn = MockMySQLConnection(synthetic_data[["user_id", "past_purchase_amounts", "mean_purchase"]])
 
 # Produce synthetic data for Kafka - simulate real-time features from Kafka
