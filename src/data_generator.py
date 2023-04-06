@@ -1,10 +1,9 @@
 import pandas as pd
 import numpy as np
-import random
 from datetime import datetime, timedelta
 
 
-def generate_synthetic_data(num_samples: int = 1000) -> pd.DataFrame:
+def generate_synthetic_data(num_samples: int = 1000, last_purchases_size: int = 3) -> pd.DataFrame:
     np.random.seed(42)
 
     # Generate random user_ids
@@ -12,14 +11,15 @@ def generate_synthetic_data(num_samples: int = 1000) -> pd.DataFrame:
 
     # Generate random timestamps for browsing events
     now = datetime.now()
-    browsing_timestamps = [now - timedelta(minutes=random.randint(1, 10000)) for _ in range(num_samples)]
+    browsing_timestamps = [now - timedelta(minutes=np.random.randint(1, 10000)) for _ in range(num_samples)]
 
     # Generate random page visits (3 pages per user)
     pages = ['home', 'products', 'cart', 'checkout']
-    last_three_pages_visited = ['/'.join(random.sample(pages, 3)) for _ in range(num_samples)]
+    last_three_pages_visited = ['/'.join(np.random.choice(pages, size=3, replace=False)) for _ in range(num_samples)]
 
     # Generate random past purchase amounts (3 purchases per user)
-    past_purchase_amounts = [np.round(np.random.randint(5, 100, 3)).tolist() for _ in range(num_samples)]
+    past_purchase_amounts = [np.round(np.random.randint(5, 100, size=last_purchases_size)).tolist() for _ in
+                             range(num_samples)]
 
     # get the mean of the last three purchases
     past_purchase_amounts_mean = [np.mean(past_purchase_amounts[i]) for i in range(num_samples)]
