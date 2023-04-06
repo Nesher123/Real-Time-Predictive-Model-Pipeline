@@ -12,7 +12,7 @@ from .data_processor import preprocess_data
 from .data_generator import generate_synthetic_data
 
 # Load the trained model and synthetic_data in the services file or another appropriate file
-synthetic_data = generate_synthetic_data()  # pd.read_csv("src/synthetic_data.csv")
+synthetic_data = generate_synthetic_data()  # pd.read_csv('src/synthetic_data.csv')
 model_file_path = os.path.join(get_project_root(), 'src', 'model', 'model.pkl')
 
 with open(model_file_path, 'rb') as f:
