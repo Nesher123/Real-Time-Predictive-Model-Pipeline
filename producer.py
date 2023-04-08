@@ -59,5 +59,7 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     config = json.load(open('config.json'))
     synthetic_data = pd.read_csv(config['DATA_PATH'])
+
+    # Create a Kafka producer. Make sure to have an instance of Kafka running on your machine.
     producer = KafkaProducer(synthetic_data, config['INPUT_TOPIC'], config['KAFKA_BOOTSTRAP_SERVERS'])
     asyncio.run(producer.start())
