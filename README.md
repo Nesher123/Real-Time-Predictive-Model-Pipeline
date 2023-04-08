@@ -1,16 +1,18 @@
-
 <h2>How to run the Real-time Prediction Service</h2>
 
 1. Clone the repository to your local machine.
 2. Make sure you have Python 3.9 or above installed on your machine (`asyncio.to_thread` was added to the asyncio module
 in Python 3.9).
 3. Install the required dependencies by running the command `pip install -r requirements.txt` in your terminal.
-4. Make sure you have Apache Kafka and Zookeeper installed and running on your machine.
-5. Start the prediction service by running the commands `python producer.py`, `python prediction_service.py`, and `python consumer.py` in your terminal.
+4. Make sure you have Apache Kafka and Zookeeper installed and running on your machine.<br>
+(`.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties` to run Zookeeper)<br>
+(`.\bin\windows\kafka-server-start.bat .\config\server.properties` to run Kafka)
+5. Start the prediction service by running the commands `python producer.py`, `python prediction_service.py`, and 
+`python consumer.py` in your terminal.
 The service will now start listening to the Kafka `input_topic_name` for incoming messages, make predictions using the machine learning model, and send the predictions to the Kafka `output_topic_name`.
 
 <h2>Demo</h2>
-<img src="./images/Predictive_model_pipeline_demo.gif" alt="Predictive_model_pipeline_demo", width="80%" height="80%"/>
+<img src="./images/Predictive_model_pipeline_demo.gif" alt="Predictive_model_pipeline_demo" width="80%" height="80%"/>
 
 
 <h2>System Architecture</h2>
@@ -64,4 +66,6 @@ The Real-time Prediction Service is a microservice system designed to retrieve r
 Thank you for reading! 🙂<br>
 I would be happy to discuss it more,<br>
 Ofir
-</footer>
+
+(If you run into problems running the project, or have any questions or comments, please feel free to reach out to me at
+Nesher123@gmail.com)</footer>
