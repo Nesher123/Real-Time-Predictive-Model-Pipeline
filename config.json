@@ -1,0 +1,7 @@
+{
+    "KAFKA_BOOTSTRAP_SERVERS": "localhost:9092",
+    "INPUT_TOPIC": "input_topic",
+    "OUTPUT_TOPIC": "output_topic",
+    "MODEL_PATH": "src/model/model.pkl",
+    "DATA_PATH": "src/data/synthetic_data.csv"
+}

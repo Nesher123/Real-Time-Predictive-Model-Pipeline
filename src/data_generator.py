@@ -1,8 +1,8 @@
 import os
+
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
-from app.utils import get_project_root
 
 
 def generate_synthetic_data(num_samples: int = 1000, last_purchases_size: int = 3) -> pd.DataFrame:
@@ -51,10 +51,12 @@ def generate_synthetic_data(num_samples: int = 1000, last_purchases_size: int = 
 
 
 if __name__ == '__main__':
+    # Generate the data synthetically
     synthetic_data = generate_synthetic_data()
     print(synthetic_data.head())
 
-    # save csv to src folder outside the package
-    path_to_save = get_project_root()
-    file_dir = os.path.join(path_to_save, 'src', 'synthetic_data.csv')
-    synthetic_data.to_csv(file_dir, index=False)
+    if not os.path.exists('data'):
+        os.makedirs('data')
+
+    # save the data to csv
+    synthetic_data.to_csv('data/synthetic_data.csv', index=False)
