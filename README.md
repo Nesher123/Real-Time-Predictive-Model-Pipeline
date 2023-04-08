@@ -11,10 +11,11 @@ The service will now start listening to the Kafka `input_topic_name` for incomin
 machine learning model, and send the predictions to the Kafka `output_topic_name`.
 
 <h2>Demo</h2>
-![Predictive_model_pipeline_demo.gif](images/Predictive_model_pipeline_demo.gif)
+<img src="./images/Predictive_model_pipeline_demo.gif" alt="Predictive_model_pipeline_demo"/>
+
 
 <h2>System Architecture</h2>
-![diagram.jpg](images/diagram.jpg)
+<img src="./images/diagram.jpg" alt="diagram" width="80%" height="80%"/>
 
 <u>Data Ingestion</u><br>
 Data is ingested from a message broker (Apache Kafka).
@@ -22,7 +23,7 @@ Data is ingested from a message broker (Apache Kafka).
 <u>Data Preprocessing</u><br>
 The ingested data will be preprocessed before it can be used for making predictions. This involves cleaning, transforming, and encoding the data to make it suitable for feeding into the prediction model.
 
-<u>Data Storage</u><br>
+<u>Data Storage<u><br>
 The offline features (i.e. user’s historical purchases) are stored in a database for future processing and analysis. The database serves as a data store for the data processing pipeline.
 
 <u>Model Training</u><br>
