@@ -11,10 +11,10 @@ The service will now start listening to the Kafka `input_topic_name` for incomin
 machine learning model, and send the predictions to the Kafka `output_topic_name`.
 
 <h2>Demo</h2>
-
+![Predictive_model_pipeline_demo.gif](images%2FPredictive_model_pipeline_demo.gif)
 
 <h2>System Architecture</h2>
-![alt diagram.jpg](diagram.jpg)
+![alt diagram.jpg](images/diagram.jpg)
 
 <u>Data Ingestion</u><br>
 Data is ingested from a message broker (Apache Kafka).
